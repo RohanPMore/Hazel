@@ -1,6 +1,6 @@
 #pragma once
 
-#include "Hazel/Layer.h"
+#include "Hazel/Core/Layer.h"
 
 #include "Hazel/Events/MouseEvent.h"
 #include "Hazel/Events/KeyEvent.h"
@@ -16,7 +16,6 @@ namespace Hazel {
 
 		virtual void OnAttach() override;
 		virtual void OnDetach() override;
-		virtual void OnImGuiRender() override;
 		
 		void Begin();
 		void End();
