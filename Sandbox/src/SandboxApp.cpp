@@ -3,16 +3,16 @@
 
 #include "GameLayer.h"
 
-//#include "Platform/OpenGL/OpenGLShader.h"
-//
-//#include "imgui/imgui.h"
+#include "Platform/OpenGL/OpenGLShader.h"
 
-//#include <glm/gtc/matrix_transform.hpp>
-//#include <glm/gtc/type_ptr.hpp>
+#include "imgui/imgui.h"
 
-//#include "Sandbox2D.h"
+#include <glm/gtc/matrix_transform.hpp>
+#include <glm/gtc/type_ptr.hpp>
 
-/*class ExampleLayer : public Hazel::Layer
+#include "Sandbox2D.h"
+
+class ExampleLayer : public Hazel::Layer
 {
 public:
 	ExampleLayer()
@@ -46,16 +46,16 @@ public:
 			 0.5f,  0.5f, 0.0f, 1.0f, 1.0f,
 			-0.5f,  0.5f, 0.0f, 0.0f, 1.0f
 		};
-		Hazel::Ref<Hazel::VertexBuffer> squareVB = Hazel::VertexBuffer::Create(squareVertices, sizeof(squareVertices));
-		squareVB->SetLayout({
+		Hazel::Ref<Hazel::VertexBuffer> quadVB = Hazel::VertexBuffer::Create(squareVertices, sizeof(squareVertices));
+		quadVB->SetLayout({
 			{ Hazel::ShaderDataType::Float3, "a_Position" },
 			{ Hazel::ShaderDataType::Float2, "a_TexCoord" }
 			});
-		m_SquareVA->AddVertexBuffer(squareVB);
+		m_SquareVA->AddVertexBuffer(quadVB);
 
 		uint32_t squareIndices[6] = { 0, 1, 2, 2, 3, 0 };
-		Hazel::Ref<Hazel::IndexBuffer> squareIB = Hazel::IndexBuffer::Create(squareIndices, sizeof(squareIndices) / sizeof(uint32_t));
-		m_SquareVA->SetIndexBuffer(squareIB);
+		Hazel::Ref<Hazel::IndexBuffer> quadIB = Hazel::IndexBuffer::Create(squareIndices, sizeof(squareIndices) / sizeof(uint32_t));
+		m_SquareVA->SetIndexBuffer(quadIB);
 
 		std::string vertexSrc = R"(
 			#version 330 core
@@ -200,7 +200,7 @@ private:
 
 	Hazel::OrthographicCameraController m_CameraController;
 	glm::vec3 m_SquareColor = {0.2f, 0.3f, 0.8f};
-};*/
+};
 
 class Sandbox : public Hazel::Application
 {
@@ -208,8 +208,8 @@ public:
 	Sandbox()
 	{
 		//PushLayer(new ExampleLayer());
-		//PushLayer(new Sandbox2D());
-		PushLayer(new GameLayer());
+		PushLayer(new Sandbox2D());
+		//PushLayer(new GameLayer());
 	}
 	~Sandbox()
 	{

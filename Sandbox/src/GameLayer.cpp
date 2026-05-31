@@ -110,16 +110,8 @@ void GameLayer::OnEvent(Hazel::Event& e)
 	EventDispatcher dispatcher(e);
 	dispatcher.Dispatch<WindowResizeEvent>(HZ_BIND_EVENT_FN(GameLayer::OnWindowResize));
 	dispatcher.Dispatch<MouseButtonPressedEvent>(HZ_BIND_EVENT_FN(GameLayer::OnMouseButtonPressed));
+	dispatcher.Dispatch<KeyPressedEvent>(HZ_BIND_EVENT_FN(GameLayer::OnKeyPressed)); //
 }
-
-//bool GameLayer::OnMouseButtonPressed(Hazel::MouseButtonPressedEvent& e)
-//{
-//	if (m_State == GameState::GameOver)
-//		m_Level.Reset();
-//
-//	m_State = GameState::Play;
-//	return false;
-//}
 
 bool GameLayer::OnMouseButtonPressed(Hazel::MouseButtonPressedEvent& e)
 {
@@ -144,6 +136,22 @@ bool GameLayer::OnMouseButtonPressed(Hazel::MouseButtonPressedEvent& e)
 
 	return false;
 }
+
+bool GameLayer::OnKeyPressed(Hazel::KeyPressedEvent& e)
+{
+	if (m_State != GameState::Play)
+		return false;
+
+	// Example: Space to jump or flap
+	if (e.GetKeyCode() == HZ_KEY_SPACE)
+	{
+		m_Level.OnPlayerJump(); // Implement this in Level or forward it to the Player
+		return true;
+	}
+
+	return false;
+}
+
 
 bool GameLayer::OnWindowResize(Hazel::WindowResizeEvent& e)
 {
