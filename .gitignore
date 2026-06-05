@@ -5,6 +5,3 @@ bin-int/
 
 # Files
 *.user
-Sandbox/HazelProfile-Runtime.json
-Sandbox/HazelProfile-Shutdown.json
-Sandbox/HazelProfile-Startup.json
