@@ -154,9 +154,6 @@ project "Sandbox"
 		runtime "Release"
         optimize "on"
 
-<<<<<<< Updated upstream
-    
-=======
 project "Hazelnut"
     location "Hazelnut"
     kind "ConsoleApp"
@@ -210,4 +207,3 @@ project "Hazelnut"
         defines "HZ_DIST"
 		runtime "Release"
         optimize "on" 
->>>>>>> Stashed changes
