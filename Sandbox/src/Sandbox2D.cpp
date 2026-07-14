@@ -227,6 +227,8 @@ void Sandbox2D::OnImGuiRender()
 
 			ImGui::EndMenuBar();
 		}
+
+		ImGui::End();
 	}
 	else
 	{
@@ -240,11 +242,9 @@ void Sandbox2D::OnImGuiRender()
 		ImGui::Text("Indices: %d", stats.GetTotalIndexCount());
 
 		ImGui::ColorEdit4("Square Color", glm::value_ptr(m_SquareColor));
-	
+
 		uint32_t textureID = m_CheckerboardTexture->GetRendererID();
 		ImGui::Image((void*)textureID, ImVec2{ 256.0f, 256.0f});
-		ImGui::End();
-
 		ImGui::End();
 	}
 }

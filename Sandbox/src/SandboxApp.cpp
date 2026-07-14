@@ -205,7 +205,8 @@ private:
 class Sandbox : public Hazel::Application
 {
 public:
-	Sandbox()
+	Sandbox(const Hazel::ApplicationSpecification& specification)
+		: Hazel::Application(specification)
 	{
 		//PushLayer(new ExampleLayer());
 		PushLayer(new Sandbox2D());
@@ -216,7 +217,12 @@ public:
 	}
 };
 
-Hazel::Application* Hazel::CreateApplication()
+Hazel::Application* Hazel::CreateApplication(Hazel::ApplicationCommandLineArgs args)
 {
-	return new Sandbox();
+	ApplicationSpecification spec;
+	spec.Name = "Sandbox";
+	spec.WorkingDirectory = "../Hazelnut";
+	spec.CommandLineArgs = args;
+
+	return new Sandbox(spec);
 }
